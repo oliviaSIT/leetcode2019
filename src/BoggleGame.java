@@ -79,13 +79,13 @@ public class BoggleGame {
         visited[i][j] = false;
     }
 
-    public static void main(String[] args) {
-        BoggleGame sol = new BoggleGame();
-        char[][] board = {{'a', 'b', 'c'}, {'d', 'e', 'f'}, {'g', 'h', 'i'}};
-        String[] words = {"abc", "ab"};
-
-        System.out.println(sol.boggleGame(board, words));
-    }
+//    public static void main(String[] args) {
+//        BoggleGame sol = new BoggleGame();
+//        char[][] board = {{'a', 'b', 'c'}, {'d', 'e', 'f'}, {'g', 'h', 'i'}};
+//        String[] words = {"abc", "ab"};
+//
+//        System.out.println(sol.boggleGame(board, words));
+//    }
 }
 
 class Trie {
