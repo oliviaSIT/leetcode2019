@@ -16,6 +16,11 @@ public class WordLadderII {
         dis = new HashMap<>();
 
         bfs(beginWord, endWord);
+
+        // for (Map.Entry<String, Integer> entry: dis.entrySet()) {
+        //     System.out.println(entry.getKey() + ": " + entry.getValue());
+        // }
+
         dfs(beginWord, endWord, new ArrayList<>());
 
         return res;
@@ -61,15 +66,19 @@ public class WordLadderII {
             for (int i = 0; i < size; i++) {
                 String curWord = q.poll();
                 int d = dis.get(curWord);
+
                 boolean flag = false;
                 List<String> nextNodes = neighbors.get(curWord);
                 for (int j = 0; j < nextNodes.size(); j++) {
                     String node = nextNodes.get(j);
+
                     if (!dis.containsKey(node)) {
                         dis.put(node, d + 1);
 
                         if (node.equals(endWord))
                             flag = true;
+
+                        q.offer(node);
                     }
                 }
 
@@ -83,9 +92,8 @@ public class WordLadderII {
         cur.add(beginWord);
 
         if (beginWord.equals(endWord)) {
-            System.out.println(beginWord);
             res.add(new ArrayList<>(cur));
-            //cur.remove(cur.size() - 1);
+            cur.remove(cur.size() - 1);
             return;
         }
 
@@ -93,6 +101,8 @@ public class WordLadderII {
 
         for (int i = 0; i < nextNodes.size(); i++) {
             String node = nextNodes.get(i);
+            if (beginWord.equals("hot"))
+                System.out.println(node);
             if (dis.containsKey(node) && dis.get(node) == dis.get(beginWord) + 1) {
                 dfs(node, endWord, cur);
             }
